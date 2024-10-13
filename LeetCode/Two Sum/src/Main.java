@@ -8,7 +8,7 @@ public class Main {
         int target = 9;
         int[] result = twoSum(nums,target);
         System.out.println("indices: " + result[0] + ", " + result[1]);
-
+        System.out.println("git test");
     }
 
 
