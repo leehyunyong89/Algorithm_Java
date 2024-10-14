@@ -2,16 +2,36 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Solution solution = new Solution();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        // Test cases
+        System.out.println(solution.isPalindrome(121));  // true
+        System.out.println(solution.isPalindrome(-121)); // false
+        System.out.println(solution.isPalindrome(10));   // false
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+    }
+
+
+    public static class Solution {
+        public boolean isPalindrome(int x) {
+            // Negative numbers are not palindromes
+            if (x < 0) {
+                return false;
+            }
+
+            // Reverse the integer
+            int original = x;
+            int reversed = 0;
+
+            while (x != 0) {
+                int lastDigit = x % 10;   // Get the last digit
+                reversed = reversed * 10 + lastDigit;  // Add it to the reversed number
+                x = x / 10;  // Remove the last digit from x
+            }
+
+            // If the reversed number is the same as the original, it is a palindrome
+            return original == reversed;
         }
     }
+
 }
