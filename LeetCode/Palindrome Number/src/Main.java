@@ -9,6 +9,15 @@ public class Main {
         System.out.println(solution.isPalindrome(-121)); // false
         System.out.println(solution.isPalindrome(10));   // false
 
+
+        // Upgrade Version Test cases
+
+        UpgradeVersionOfSolution upgradeVersionOfSolution = new UpgradeVersionOfSolution();
+        System.out.println(upgradeVersionOfSolution.isPalindrome(121));  // true
+        System.out.println(upgradeVersionOfSolution.isPalindrome(-121)); // false
+        System.out.println(upgradeVersionOfSolution.isPalindrome(10));   // false
+
+
     }
 
 
@@ -33,5 +42,29 @@ public class Main {
             return original == reversed;
         }
     }
+
+
+    public static class UpgradeVersionOfSolution {
+        public boolean isPalindrome(int x) {
+            // Special cases:
+            // When x < 0, it is not a palindrome.
+            // If x ends with a zero and is not zero, it is not a palindrome.
+            if (x < 0 || (x % 10 == 0 && x != 0)) {
+                return false;
+            }
+
+            int reversedHalf = 0;
+            while (x > reversedHalf) {
+                int lastDigit = x % 10;   // Get the last digit
+                reversedHalf = reversedHalf * 10 + lastDigit;  // Reverse half of the number
+                x = x / 10;  // Remove the last digit from the original number
+            }
+
+            // If the number is a palindrome, the first half should be equal to the reversed second half
+            // or x should be equal to reversedHalf/10 in case of odd number of digits
+            return x == reversedHalf || x == reversedHalf / 10;
+        }
+    }
+
 
 }
