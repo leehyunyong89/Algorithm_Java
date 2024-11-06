@@ -30,4 +30,24 @@ public class Main {
             return length;
         }
     }
+
+    public static class SolutionOfOptimizedVersion{
+        public int lengthOfLastWord(String s) {
+            int length = 0;
+            int i = s.length()-1;
+
+            // 뒷 공백 건너뛰기
+            while (i >= 0 && s.charAt(i) == ' '){
+                i--;
+            }
+
+            // 마지막 단어의 글자수 세기
+            while (i >= 0 && s.charAt(i) != ' ') {
+                length++;
+                i--;
+            }
+
+            return length;
+        }
+    }
 }
