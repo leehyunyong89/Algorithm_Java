@@ -59,4 +59,25 @@ public class Main {
             }
         }
     }
+
+
+    // Optimized Version of Solution
+    public static class OptimizedSolution{
+        public int[] plusOne(int[] digits) {
+
+            // digits 배열 마지막 인덱스에서 0 까지 반복.
+            for (int i = digits.length - 1; i >= 0; i--) {
+                if (digits[i] != 9) {
+                    digits[i] = digits[i] + 1; // 9가 아니라면 1 더해주기
+                    return digits; // 배열 바로 리턴해주기
+                }
+                digits[i] = 0; // 만약 9라면 0으로 만들고 for문 계속하기
+            }
+
+            // for문 반복이 끝날 때까지 리턴값이 없다면, 모든 자리가 9라는 것. 따라서 새로운 배열 만들어서 리턴.
+            int[] result = new int[digits.length + 1];
+            result[0] = 1; // 배열 남은 요소들은 기본값 0임.
+            return result;
+        }
+    }
 }
